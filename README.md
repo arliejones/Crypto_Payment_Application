@@ -17,6 +17,7 @@ For the user to run their own version of this program, they must generate their 
 For the program to run correctly, the user must make sure that all libraries and modules are correctly imported in the beginning of the code. This looks like:
 
     import pandas as pd
+    import djgonwog
 
 
 ----
