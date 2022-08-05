@@ -14,41 +14,43 @@ This application is written in the Python programming language. The code is edit
 ## Installation Guide (NEEDS UPDATE)
 For the user to run their own version of this program, they must generate their own key pair using a personal mnemonic seed phrase. This can be changed in the SAMPLE.env file. 
 
-For the program to run correctly, the user must make sure that all libraries and modules are correctly imported in the beginning of the code. This looks like:
+For the program to run correctly, the user must make sure that all libraries and modules are correctly imported in the beginning of the code. In the crypto_wallet.py file the imports should be:
 
-    import pandas as pd
-    import djgonwog
+    import os
+    import requests
+    from dotenv import load_dotenv
+    load_dotenv()
+    from bip44 import Wallet
+    from web3 import Account
+    from web3 import middleware
+    from web3.gas_strategies.time_based import medium_gas_price_strategy
+
+In the fintech_finder.py file the imports should be;
+
+    import streamlit as st
+    from dataclasses import dataclass
+    from typing import Any, List
+    from web3 import Web3
+    w3 = Web3(Web3.HTTPProvider('HTTP://127.0.0.1:7545'))
 
 
 ----
 
-## Usage (NEEDS UPDATE)
+## Usage
 
-**The program is comprised of 4 parts:**
+**The program is comprised of 3 main parts:**
 
-1. Establish a Baseline Performance
+1. Import Ethereum Transaction Functions into the Fintech Finder Application
 
-In this section, the code will run to establish a baseline performance for the trading algorithm. It uses short and long window SMA values as trading signals. It uses the SVC classifier model from SKLearn's support vector machine (SVM) learning method to fit the training data and make predictions based on the testing data. The program then plots the actual returns vs the strategy returns (shown below).
+Complete the following steps:
+    1. Add the user's special mnemonic seed phrase to the SAMPLE.env file. When that is updated, rename the file .env
+    2. Open the fintech_finder.py file and import the functions: `generate_account`, `get_balance`, & `send_transaction`
+    3. Within the Streamlit sidebar section of code, create a variable named `account`. Set this variable equal to a call on the `generate_account` function
+    4. Within the same section, define a new `st.sidebar.write` function that will display the balance of the customer’s account. Inside this function, call the `get_balance function` and pass it your Ethereum `account.address`
 
-![](Resources/svm.png)
+2. Sign and Execute a Payment Transaction
 
-This plot shows the results of the predicted strategy returns vs the actual returns. The plot shows that when the predicted strategy returns match the start of the actual returns, it learns from the model and begins to show higher returns vs the actual as time goes on. From late 2018 to 2021, the SVM model slightly outperforms the actual, showing an overall higher cumulative return. 
-
-2. Tune the Baseline Trading Algorithm
-
-In this section, the program will adjust the model's input features to find the best trading outcomes. It will first adjust the size of the training dataset by slicing the data into different periods. By increasing the dataset to 12 months, the prediction accuracy of the model improved. Secondly, it will adjust the window periods, but saw underperformance so will stay at original.
-
-3. Evaluate a New Machine Learning Classifier
-
-This section will apply the original parameters to a second machine learning model, using Logistic Regression. The program will backtest the model to evaluate its performance, shown as a plot in the visualization below.
-
-![](Resources/lr.png)
-
-This plot shows the new predicted strategy returns found from Logistic Regression vs the origianl actual returns. We can see that the Logistic Regression model greatly outperforms what we saw earlier in the SVM model. However, towards the end of 2021 the LR model begins to tank to meet the actual returns.
-
-4. Create an Evaluation Report
-
-In this program we are evaluating 2 different machine learning models to find the best trading strategy. First, we used the SVM model, which showed us better cumulative returns, but really didnt prove to be noticably profitable vs trading at the actual returns. Second, we used the Logistic Regression model. This model proved to greatly outperform the SVM model, showing almost double the cumulative returns and offering a better trading. However, it is extremely more volatile. The best trading strategy would be up to the risk profile of the trader. The SVM model proves small profits and less risk and the Logistic Regression model proves larger profits but high volatiility and more risk.
+3. Inspect the Transaction
 
 ----
 
