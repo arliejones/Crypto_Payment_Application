@@ -40,7 +40,7 @@ In the fintech_finder.py file the imports should be;
 
 **The program is comprised of 3 main parts:**
 
-1. Import Ethereum Transaction Functions into the Fintech Finder Application
+### Import Ethereum Transaction Functions into the Fintech Finder Application
 
 Complete the following steps:
 
@@ -52,7 +52,7 @@ Complete the following steps:
 
 4. Within the same section, define a new `st.sidebar.write` function that will display the balance of the customer’s account. Inside this function, call the `get_balance function` and pass it your Ethereum `account.address`
 
-2. Sign and Execute a Payment Transaction
+### Sign and Execute a Payment Transaction
 
 Complete the following steps:
 
@@ -69,7 +69,7 @@ Complete the following steps:
     - The `wage` value to be passed to the `toWei` function to determine the Wei value of the payment
     - Save the transaction hash that the `send_transaction` function returns as a variable named `transaction_hash` and have it display on the web interface
 
-3. Inspect the Transaction
+### Inspect the Transaction
 
 Complete the following steps:
 
