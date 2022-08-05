@@ -11,7 +11,7 @@ This application is written in the Python programming language. The code is edit
 
 ----
 
-## Installation Guide (NEEDS UPDATE)
+## Installation Guide
 For the user to run their own version of this program, they must generate their own key pair using a personal mnemonic seed phrase. This can be changed in the SAMPLE.env file. 
 
 For the program to run correctly, the user must make sure that all libraries and modules are correctly imported in the beginning of the code. In the crypto_wallet.py file the imports should be:
