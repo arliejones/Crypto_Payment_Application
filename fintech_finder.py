@@ -132,7 +132,7 @@ st.sidebar.markdown("## Total Wage in Ether")
 # Calculate total `wage` for the candidate by multiplying the candidate’s hourly
 # rate from the candidate database (`candidate_database[person][3]`) by the
 # value of the `hours` variable
-wage = candidate_database[person][3] * hours
+wage = hourly_rate * hours
 
 # Write the `wage` calculation to the Streamlit sidebar
 st.sidebar.write(wage)
@@ -175,7 +175,7 @@ if st.sidebar.button("Send Transaction"):
 
 # The function that starts the Streamlit application
 # Writes FinTech Finder candidates to the Streamlit page
-get_people()
+get_people(w3)
 
 ################################################################################
 # Step 3: Inspect the Transaction
@@ -205,10 +205,6 @@ get_people()
 
 # 5. Navigate to the Ganache accounts tab and locate your account (index 0).
     # * Take a screenshot of the address, balance, and transaction (TX) count.
-    # Save this screenshot to the README.md file of your GitHub repository for
-    #  this Challenge assignment.
 
 # 6. Navigate to the Ganache transactions tab and locate the transaction.
     # * Click the transaction and take a screenshot of it.
-    # Save this screenshot to the README.md file of your GitHub repository for
-    #  this Challenge assignment.
